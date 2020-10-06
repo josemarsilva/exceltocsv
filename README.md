@@ -22,7 +22,7 @@ C:\My Git\workspace-github\exceltocsv\dist>java -jar exceltocsv.jar
 
 #### Diagrama de Caso de Uso
 
-![UseCaseDiagram](doc/UseCaseDiagram%20-%20Context%20-%20exceltocsv.png)
+![UseCaseDiagram](doc/UseCaseDiagram%20-%20Context%20-%20ExcelToCsv.png)
 
 
 ### 2.5. Requisitos ###
