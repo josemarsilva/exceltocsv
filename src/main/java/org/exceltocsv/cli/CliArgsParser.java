@@ -24,7 +24,7 @@ public class CliArgsParser {
 	
 	// Constants ...
 	public final static String APP_NAME = new String("exceltocsv");
-	public final static String APP_VERSION = new String("v.2020.10.06");
+	public final static String APP_VERSION = new String("v.2020.10.06.2131");
 	public final static String APP_USAGE = new String(APP_NAME + " [<args-options-list>] - "+ APP_VERSION);
 
 	// Constants defaults ...

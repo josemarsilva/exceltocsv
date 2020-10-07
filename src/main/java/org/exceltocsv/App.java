@@ -18,6 +18,9 @@ public class App
 		// Create exceltocsv  instance ...
 		ExcelToCsv excelToCsv = new ExcelToCsv(cliArgsParser);
 		
-        System.out.println( "Done!" );
+		// Execute export to Csv ...
+		excelToCsv.executeExportToCsv();
+
+		System.out.println( "Done!" );
     }
 }
