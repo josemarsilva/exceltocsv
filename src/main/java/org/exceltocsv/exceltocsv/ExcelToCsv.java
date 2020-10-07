@@ -65,8 +65,11 @@ public class ExcelToCsv {
 		    outputCsvFilename = new String( sheet.getSheetName().replace(" ", "").concat(".csv") );
 		    outputCsvFilename = new String( this.cliArgsParser.getOutputFolderPathCsvOption().concat("\\").concat("\\").concat(outputCsvFilename) );
 			System.out.println("Exporting worksheet '%s' to '%s' ...".replaceFirst("%s",sheet.getSheetName()).replaceFirst("%s",outputCsvFilename));
+			
+			// 
+			int currentLineNumber = 0;
 
-			// FileWriter and BufferWriter ... 
+			// New FileWriter and BufferWriter ... 
 			FileWriter fileWriter = null;
 			try {
 				fileWriter = new FileWriter(outputCsvFilename);
@@ -82,7 +85,7 @@ public class ExcelToCsv {
 				for (Row row : sheet) {
 					String strRow = new String("");
 					// Loop iterate Cells  ...
-				    for (Cell cell : row) {
+					for (Cell cell : row) {
 						String strCell = new String("");
 						// Cell is not empty
 						if (cell != null) {
@@ -125,8 +128,21 @@ public class ExcelToCsv {
 						} else {
 							strRow = new String(strRow.concat(";").concat(strCell));
 						}
-				    }
-				    
+					}
+
+					// Show current row ...
+					if (currentLineNumber<Integer.MAX_VALUE) currentLineNumber++;
+					if ( 
+							(currentLineNumber < 10)
+							|| (currentLineNumber >= 10 && currentLineNumber < 100 && currentLineNumber % 10 == 0)
+							|| (currentLineNumber >= 100 && currentLineNumber < 1000 && currentLineNumber % 100 == 0)
+							|| (currentLineNumber >= 1000 && currentLineNumber < 10000 && currentLineNumber % 1000 == 0)
+							|| (currentLineNumber >= 10000 && currentLineNumber < 100000 && currentLineNumber % 5000 == 0)
+							|| (currentLineNumber >= 100000 && currentLineNumber % 10000 == 0)
+						) {
+						System.out.print("\r" + "  row: %s".replaceFirst("%s", String.valueOf(currentLineNumber) ));
+					}
+
 				    // Write bufferedWriter ...
 				    bufferedWriter.write(strRow.concat("\n"));
 				    
@@ -134,14 +150,33 @@ public class ExcelToCsv {
 
 			} catch (IOException e) {
 				// e.printStackTrace();
+				System.out.print("");
 				System.err.println(MSG_ERROR_EXCEL_EXCEPTION.replaceFirst("s", e.getMessage()).replaceFirst("%s", "bufferedWriter.write()") );
 				System.exit(-1);
 			}
+
+			// Show last row ...
+			System.out.println("");
+			System.out.print("\r" + "  row: %s".replaceFirst("%s", String.valueOf(currentLineNumber) ));
+			System.out.println("");
+
+			// Close bufferedWriter ...
 			try {
 				bufferedWriter.close();
 			} catch (IOException e) {
 				// e.printStackTrace();
+				System.out.print("");
 				System.err.println(MSG_ERROR_EXCEL_EXCEPTION.replaceFirst("s", e.getMessage()).replaceFirst("%s", "bufferedWriter.close()") );
+				System.exit(-1);
+			}
+			
+			// Close fileWriter ...
+			try {
+				fileWriter.close();
+			} catch (IOException e) {
+				// e.printStackTrace();
+				System.out.print("");
+				System.err.println(MSG_ERROR_EXCEL_EXCEPTION.replaceFirst("s", e.getMessage()).replaceFirst("%s", "fileWriter.close()") );
 				System.exit(-1);
 			}
 		}
@@ -151,6 +186,7 @@ public class ExcelToCsv {
 			workbook.close();
 		} catch (Exception e) {
 			// e.printStackTrace();
+			System.out.print("");
 			System.err.println(MSG_ERROR_EXCEL_EXCEPTION.replaceFirst("s", e.getMessage()).replaceFirst("%s", "workbook.close()") );
 			System.exit(-1);
 		}
