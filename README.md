@@ -11,6 +11,19 @@ Este repositório contém o código fonte do componente **exceltocsv**. Este com
 
 ```bat
 C:\My Git\workspace-github\exceltocsv\dist>java -jar exceltocsv.jar
+Missing required options: i, o
+usage: exceltocsv [<args-options-list>] - v.2020.10.06.2131
+ -h,--help                           shows usage help message. See more
+                                     https://github.com/josemarsilva/excel
+                                     tocsv
+ -i,--input-excel-file <arg>         Nome do arquivo que contem Pasta de
+                                     trabalho EXCEL (.xls ou .xlsx) que
+                                     sera copiada para CSV. Ex:
+                                     exceltocsv-exemplo.xlsx
+ -o,--output-folder-path-csv <arg>   Nome do caminho da pasta onde deverao
+                                     ser gerados os arquivos (.csv)
+                                     correspondentes a cada sheet do
+                                     workbook. Ex: . ou C:\TEMP
 ```
 
 

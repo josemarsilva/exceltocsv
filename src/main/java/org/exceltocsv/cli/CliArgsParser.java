@@ -57,13 +57,13 @@ public class CliArgsParser {
         Option inputExcelFileOption = Option.builder("i")
         		.longOpt("input-excel-file") 
         		.required(true) 
-        		.desc("Nome do arquivo que contem Pasta de trabalho EXCEL (.xls ou .xlsx) que sera copiada para CSV. Ex: exemplo.xlsx")
+        		.desc("Nome do arquivo que contem Pasta de trabalho EXCEL (.xls ou .xlsx) que sera copiada para CSV. Ex: exceltocsv-exemplo.xlsx")
         		.hasArg()
         		.build();
         Option outputFolderPathCsvOption = Option.builder("o")
                 .longOpt("output-folder-path-csv") 
                 .required(true) 
-        		.desc("Nome do caminho da pasta onde deverao ser gerados os arquivos (.csv) correspondentes a cada sheet do workbook. Ex: C:\\TEMP")
+        		.desc("Nome do caminho da pasta onde deverao ser gerados os arquivos (.csv) correspondentes a cada sheet do workbook. Ex: . ou C:\\TEMP")
         		.hasArg()
                 .build(); 
         
